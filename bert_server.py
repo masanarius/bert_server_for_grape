@@ -6,6 +6,11 @@ import torch
 # FastAPIのアプリ作成
 app = FastAPI()
 
+# ✅ pingエンドポイントを追加（Renderサーバーのスリープ解除に使用）
+@app.get("/ping")
+def ping():
+    return {"message": "pong"}
+
 # Sentence-BERTの日本語モデル（初期ロードに数秒かかります）
 model = SentenceTransformer("sonoisa/sentence-bert-base-ja-mean-tokens")
 
